@@ -24,4 +24,21 @@ galleryEl.append(...newGallary);
 
 galleryEl.addEventListener('click', onClickImage);
 
+function onClickImage(event) {
+  if (!event.target.classList.contains('gallery__image')) {
+    return;
+  }
+  const instance = basicLightbox.create(`
+    <img src="${evt.target.dataset.source}" width="auto" height="auto">
+  `);
+
+  instance.show();
+
+  galleryEl.addEventListener('keydown', event => {
+    if (event.code === 'Escape') {
+      instance.close();
+    }
+  });
+}
+
 console.log(galleryItems);
