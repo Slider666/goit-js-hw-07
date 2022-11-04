@@ -25,11 +25,14 @@ galleryEl.append(...newGallary);
 galleryEl.addEventListener('click', onClickImage);
 
 function onClickImage(event) {
+  event.preventDefault();
+  console.log(event.target);
   if (!event.target.classList.contains('gallery__image')) {
     return;
   }
+
   const instance = basicLightbox.create(`
-    <img src="${evt.target.dataset.source}" width="auto" height="auto">
+    <img src="${event.target.dataset.source}" width="auto" height="auto">
   `);
 
   instance.show();
